@@ -50,9 +50,9 @@ PERL_LOCAL_LIB_ROOT="/home/gnorton/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"/home/gnorton/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/gnorton/perl5"; export PERL_MM_OPT;
 
-export BASE16_SHELL=$HOME/.runcoms/base16-shell/
+export BASE16_SHELL=$HOME/.dotfiles/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-eval sh $HOME/.runcoms/base16-shell/scripts/base16-3024.sh
+eval sh $HOME/.dotfiles/base16-shell/scripts/base16-3024.sh
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -63,3 +63,12 @@ if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
 fi
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+
+
+#
+# Aliases
+#
+# Source the custom aliases file.
+if [[ -s "$HOME/.zaliases" ]]; then
+  source "$HOME/.zaliases"
+fi

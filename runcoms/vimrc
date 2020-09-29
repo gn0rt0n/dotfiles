@@ -4,36 +4,34 @@ let mapleader = ','            " The default is \, but a comma is much better.
 
 filetype off                  " required
 
-"Set the runtime path to include Vundle and initialize.
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
 
-Plugin 'preservim/tagbar'
+Plug 'preservim/tagbar'
 
-Plugin 'janko-m/vim-test'
+Plug 'janko-m/vim-test'
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s', '"', "'"]
 let g:SuperTabDefaultCompletionType = '<C-p>'
 
-" Plugin 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " " make YCM compatible with UltiSnips (using supertab)
 " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 
-Plugin 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 let base16colorspace=256
 
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -41,7 +39,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 inoremap <Tab> <c-r>=UltiSnips#ExpandSnippet()<cr>
 inoremap <leader>us <Esc>:call UltiSnips#ListSnippets()<CR>
 
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
@@ -56,9 +54,9 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_start_level =2
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size=1
@@ -66,7 +64,7 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 
-Plugin 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -75,7 +73,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -92,7 +90,7 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_use_caching         = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_clear_cache_on_exit = 0
@@ -111,9 +109,9 @@ if executable('ag')
     let g:ctrlp_use_caching = 0
 endif
 
-" Plugin 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a" :Tabularize /"<CR>
@@ -124,54 +122,54 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 nmap <Leader>ahr :Tabularize /^[^=]*\zs=><CR>
 vmap <Leader>ahr :Tabularize /^[^=]*\zs=><CR>
 
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
-Plugin 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_ctags_exclude = ["*.xml", "*.html", "*.js", "*.css", "*.json", "build", ".git", "node_modules"]
 
-Plugin 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
 
-Plugin 'mg979/vim-visual-multi'
+Plug 'mg979/vim-visual-multi'
 
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 set diffopt+=vertical
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
-Plugin 'andymass/vim-matchup'
+Plug 'andymass/vim-matchup'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 map <F7> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=60
 
-Plugin 'schickling/vim-bufonly'
+Plug 'schickling/vim-bufonly'
 "Quickly delete the current buffer
 nmap <Leader>kk :bd<CR>
 nmap <Leader>KK :BufOnly<CR>
 
-Plugin 'stephpy/vim-php-cs-fixer'
+Plug 'stephpy/vim-php-cs-fixer'
 let g:php_cs_fixer_rules = "@PSR2"
 nmap <Leader>ff :call PhpCsFixerFixFile()<cr>
 " autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
-Plugin 'adoy/vim-php-refactoring-toolbox'
+Plug 'adoy/vim-php-refactoring-toolbox'
 let g:vim_php_refactoring_use_default_mapping = 0
 nnoremap <unique> <Leader>du :call PhpDetectUnusedUseStatements()<CR>
 
 " Include Phpactor
-Plugin 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 " Include use statement
 nmap <Leader>u :call phpactor#UseAdd()<CR>
 
@@ -203,8 +201,8 @@ vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
 vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" All of your Plugs must be added before the following line
+call plug#end()            " required
 filetype plugin indent on    " required
 
 syntax enable
