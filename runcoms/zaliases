@@ -1,0 +1,66 @@
+#------------------------------------------------------------------------------
+# Global Shell
+#------------------------------------------------------------------------------
+alias -g ......="../../../../.."
+alias -g .....="../../../.."
+alias -g ....="../../.."
+alias -g ...="../.."
+alias hgr="history |grep "
+alias lsa="ls -lah"
+alias 99="cd ~/camp99"
+alias 98="cd ~/camp98"
+alias 30="cd ~/camp30"
+alias 31="cd ~/camp31"
+alias 27="cd ~/camp27"
+alias 28="cd ~/camp28"
+#------------------------------------------------------------------------------
+# Aliases
+#------------------------------------------------------------------------------
+alias ae="vim ~/.zaliases"
+alias agr="alias |grep "
+alias aso="source ~/.zaliases"
+alias ag="ag $* --pager 'less -R'"
+#------------------------------------------------------------------------------
+# Vim
+#------------------------------------------------------------------------------
+alias vi=vim
+alias ev="vim ~/.vimrc"
+alias ez="vim ~/.zshrc"
+#------------------------------------------------------------------------------
+# Suscon
+#------------------------------------------------------------------------------
+alias camps="ssh camps.odindev.com"
+alias icrt="\rm *.log && re && tail * -f"
+#-------------------------------------------------------------------------------
+# Laravel Stuff
+#------------------------------------------------------------------------------
+alias art="php artisan"
+alias cda="composer dump-autoload"
+alias vssh="ssh vagrant@overlord.app"
+#------------------------------------------------------------------------------
+# Laravel Artisan
+#------------------------------------------------------------------------------
+alias mig="art migrate:fresh"
+alias migs="art migrate:fresh --seed"
+alias cfs="composer fix-style"
+alias tinker="art tinker"
+#------------------------------------------------------------------------------
+# Laravel Artisan PHPUnit
+#------------------------------------------------------------------------------
+alias tmig="art migrate:fresh --database=mysql_testing"
+#------------------------------------------------------------------------------
+# Git Flow
+#------------------------------------------------------------------------------
+alias gffs="git flow feature start"
+alias gfff="git flow feature finish"
+#------------------------------------------------------------------------------
+# Git 
+#------------------------------------------------------------------------------
+alias grm="git rm --cached "
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias nah='git reset --hard;git clean -df'
+alias wip="git add . && git commit -m 'wip'"
+alias p="phpunit"
+alias pf="phpunit --filter "
+
+alias rsca="art optimize:clear && sudo supervisorctl restart all"

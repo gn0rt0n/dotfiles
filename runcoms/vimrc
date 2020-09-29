@@ -1,0 +1,357 @@
+set nocompatible " explicitly get out of vi-compatible mode
+
+let mapleader = ','            " The default is \, but a comma is much better.
+
+filetype off                  " required
+
+"Set the runtime path to include Vundle and initialize.
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'preservim/tagbar'
+
+Plugin 'janko-m/vim-test'
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+Plugin 'ervandew/supertab'
+let g:SuperTabNoCompleteAfter = ['^', ',', '\s', '"', "'"]
+let g:SuperTabDefaultCompletionType = '<C-p>'
+
+" Plugin 'Valloric/YouCompleteMe'
+" " make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+
+Plugin 'chriskempson/base16-vim'
+let base16colorspace=256
+
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'SirVer/ultisnips'
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+inoremap <Tab> <c-r>=UltiSnips#ExpandSnippet()<cr>
+inoremap <leader>us <Esc>:call UltiSnips#ListSnippets()<CR>
+
+Plugin 'easymotion/vim-easymotion'
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+Plugin 'honza/vim-snippets'
+
+Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_start_level =2
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+
+Plugin 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+Plugin 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s: '
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_use_caching         = 1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_match_window = 'top,order:ttb,min:10,max:30,results:30'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(git|hg|svn)|[\/](node_modules|images|orders|tmp|mysql)$',
+    \ }
+if executable('ag')
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+endif
+
+" Plugin 'ervandew/supertab'
+
+Plugin 'godlygeek/tabular'
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a" :Tabularize /"<CR>
+vmap <Leader>a" :Tabularize /"<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+" Align Hash Rocket
+nmap <Leader>ahr :Tabularize /^[^=]*\zs=><CR>
+vmap <Leader>ahr :Tabularize /^[^=]*\zs=><CR>
+
+Plugin 'tpope/vim-eunuch'
+
+Plugin 'tpope/vim-unimpaired'
+
+Plugin 'ludovicchabant/vim-gutentags'
+let g:gutentags_ctags_exclude = ["*.xml", "*.html", "*.js", "*.css", "*.json", "build", ".git", "node_modules"]
+
+Plugin 'sjl/gundo.vim'
+nnoremap <F5> :GundoToggle<CR>
+
+Plugin 'mg979/vim-visual-multi'
+
+Plugin 'tpope/vim-abolish'
+
+Plugin 'tpope/vim-commentary'
+
+Plugin 'tpope/vim-fugitive'
+set diffopt+=vertical
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+Plugin 'tpope/vim-repeat'
+
+Plugin 'tpope/vim-surround'
+
+Plugin 'sheerun/vim-polyglot'
+
+Plugin 'andymass/vim-matchup'
+
+Plugin 'scrooloose/nerdtree'
+map <F7> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=60
+
+Plugin 'schickling/vim-bufonly'
+"Quickly delete the current buffer
+nmap <Leader>kk :bd<CR>
+nmap <Leader>KK :BufOnly<CR>
+
+Plugin 'stephpy/vim-php-cs-fixer'
+let g:php_cs_fixer_rules = "@PSR2"
+nmap <Leader>ff :call PhpCsFixerFixFile()<cr>
+" autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+
+Plugin 'adoy/vim-php-refactoring-toolbox'
+let g:vim_php_refactoring_use_default_mapping = 0
+nnoremap <unique> <Leader>du :call PhpDetectUnusedUseStatements()<CR>
+
+" Include Phpactor
+Plugin 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+" Include use statement
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+
+" Invoke the navigation menu
+nmap <Leader>nn :call phpactor#Navigate()<CR>
+
+" Goto definition of class or class member under the cursor
+nmap <Leader>o :call phpactor#GotoDefinition()<CR>
+
+" Show brief information about the symbol under the cursor
+nmap <Leader>K :call phpactor#Hover()<CR>
+
+" Transform the classes in the current file
+nmap <Leader>tt :call phpactor#Transform()<CR>
+
+" Generate a new class (replacing the current file)
+nmap <Leader>cc :call phpactor#ClassNew()<CR>
+
+" Extract expression (normal mode)
+nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
+
+" Extract expression from selection
+vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+
+" Extract method from selection
+vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+syntax enable
+set shell=zsh
+se backspace=indent,eol,start " Make backspace behave like every other editor.
+
+"-------------Visuals--------------"
+colorscheme base16-3024
+set term=xterm-256color
+set t_CO=256                                " Use 256 colors. This is useful for Terminal Vim.
+set guifont=Ubuntu\ Mono\ derivative\ Powerline:h17 " Set the default font family and size.
+set linespace=15                            " Macvim-specific line-height.
+set guioptions-=l                           " Disable Gui scrollbars.
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+set laststatus=2                            " Always display the status line
+set scrolloff=999
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+highlight Comment cterm=italic
+highlight LineNr ctermbg=232 ctermfg=236
+highlight CursorLineNr ctermbg=232 ctermfg=190
+highlight SignColumn ctermbg=232 ctermfg=190
+highlight GitGutterAdd ctermbg=232 ctermfg=002
+highlight GitGutterChange ctermbg=232 ctermfg=190
+highlight GitGutterDelete ctermbg=232 ctermfg=001
+highlight GitGutterChangeDelete ctermbg=232 ctermfg=190
+
+"-------------Search--------------"
+set hlsearch                                "Highlight all matched terms.
+set incsearch                               "Incrementally highlight, as we type.
+
+"-------------Split Management--------------"
+set splitbelow                              "Make splits default to below...
+set splitright                              "And to the right. This feels more natural.
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"-------------General Set Statements--------------"
+set expandtab                          " no real tabs please!
+set ignorecase                         " case insensitive by default
+set smartcase
+set infercase                          " case inferred by default
+set matchpairs+=<:>                    " Allow % to bounce between angles too
+set shiftwidth=4                       " auto-indent amount when using cindent, >>, << and stuff like that
+set softtabstop=4                      " when hitting tab or backspace, how many spaces should a tab be (see expandtab)
+set tabstop=4                          " real tabs should be 8, and they will show with set list on
+set wildignore=*.dll,*.o,*.obj,*.bak,  " ignore these extensions
+    \ *.exe,*.pyc,*.jpg,*.gif,*.png,*.svg,*.eot,*.ttf,*.woff  " ignore these extensions
+set nolist                               " we do what to show tabs, to ensure we get them out of my files
+set number                     " Let's activate line numbers.
+set relativenumber
+set hidden
+set timeoutlen=1000 ttimeoutlen=0           " Elminates delays on ESC key
+set lazyredraw
+set redrawtime=10000
+set ttyfast
+set smartindent
+set nowrap
+
+
+"-------------Mappings--------------"
+" Move up/down physical lines during wrap
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" Recorded Macros
+" Split line across blocks () and Blocks {} and format
+nmap <leader>s( vibdikopvib:s/,/,\r/g:set nohlsearchvib=
+nmap <leader>s{ viBdikopviB:s/,/,\r/g:set nohlsearchviB=
+nmap <leader>s[ vi[dikopvi[:s/,/,\r/g:set nohlsearchvi[=
+nmap <leader>s< F<Wivi<:s/" \(\w\)/"\r\1/g:set nohlsearchvi<=
+
+"Make it easy to edit the Vimrc file.
+nmap <Leader>ev :edit $MYVIMRC<cr>
+
+"Make it easy to edit the Vimrc file.
+nmap <Leader>fn :echo @%<cr>
+
+"Add simple highlight removal.
+nmap <Leader><Leader> :set hlsearch! hlsearch?<CR>
+
+"Remap escape key since it's used so much
+ino jj <esc>
+cno jj <c-c>
+vno v <esc>
+
+set pastetoggle=<F4>
+
+"Allow us a way to write a file even if we don't have permissions
+cmap w!! w !sudo tee % >/dev/null
+
+" Use tab to switch buffers when in normal mode
+nmap <leader>bb :bn<cr>
+nmap <leader>vv :bp<cr>
+nmap <F8> :TagbarToggle<CR>
+
+"-------------Auto-Commands--------------"
+"Automatically source the Vimrc file on save.
+
+augroup autosourcing
+    autocmd!
+    autocmd BufWritePost .vimrc source %
+augroup END
+
+" Set the default file type for unknown files
+autocmd BufEnter * if &filetype == "" | setlocal ft=html | endif
+
+au BufRead,BufNewFile resources/views/*.blade.php set ft=blade
+
+"-------------Functions--------------"
+function! TrimWhiteSpace()
+    %s/\s*$//
+    ''
+:endfunction
+
+nnoremap <F2> :call TrimWhiteSpace()<CR>
+
+"-------------Functions--------------"
+"Common mistypes
+:command! WQ wq
+:command! Wq wq
+:command! W w
+:command! Q q
+:command! Qa qa
+
+"-------------Cursor Column Length--------------"
+if exists('+colorcolumn')
+    set colorcolumn=80,120
+    highlight ColorColumn ctermbg=233
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    match OverLength /\%81v.\+/
+endif
+
+" Macros used to complete constructor arguments
+let @a='F$y2wOprotected ;Po/const/{o   $this-> = ;PF>pF$xO'
+let @b = 'F$y2w?protectedoprotected ;P/construct}/}?$thiso$this-> = ;PF>pF$xj'
