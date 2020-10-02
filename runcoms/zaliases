@@ -64,3 +64,6 @@ alias p="phpunit"
 alias pf="phpunit --filter "
 
 alias rsca="art optimize:clear && sudo supervisorctl restart all"
+
+
+alias chrome="open -a 'Google Chrome'"
