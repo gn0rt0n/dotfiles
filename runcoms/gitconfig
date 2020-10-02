@@ -1,0 +1,16 @@
+[user]
+	email = gary.norton@odindev.com
+	name = Gary Norton
+[push]
+	default = upstream
+[diff]
+	renamelimit = 100000
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+	ff = false
+	ff = true
+[difftool]
+	prompt = false
+[commit]
+	template = ~/.gitmessage
