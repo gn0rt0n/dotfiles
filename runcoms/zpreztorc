@@ -32,13 +32,13 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'completion' \
   'directory' \
+  'docker' \
   'editor' \
   'environment' \
   'git'\
   'history' \
   'prompt' \
   'spectrum' \
-  'ssh' \
   'terminal' \
   'tmux' \
   'utility' \
@@ -218,7 +218,7 @@ zstyle ':prezto:module:prompt' theme 'steeef'
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
-# zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+# zstyle ':prezto:module:tmux:session' name 'Gary Norton'
 
 #
 # Utility
