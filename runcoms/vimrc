@@ -221,6 +221,7 @@ set guioptions-=r
 set guioptions-=R
 set laststatus=2                            " Always display the status line
 set scrolloff=999
+set sidescrolloff=999
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 highlight Comment cterm=italic

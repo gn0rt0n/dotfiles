@@ -6,5 +6,6 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.dotfiles/runcoms/^README.md(.N); do
 done
 
 ln -s "${ZDOTDIR:-$HOME}/.dotfiles/vim" ${ZDOTDIR:-$HOME}/.vim
+ln -s "${ZDOTDIR:-$HOME}/.dotfiles/bin" ${ZDOTDIR:-$HOME}/bin
 
 git submodule update --init --recursive
