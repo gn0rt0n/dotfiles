@@ -307,7 +307,7 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <leader>bb :bn<cr>
 nmap <leader>vv :bp<cr>
 nmap <F8> :TagbarToggle<CR>
-vmap <leader>y :w !it2copy
+vmap <leader>y :w !it2copy<CR><CR>
 "-------------Auto-Commands--------------"
 "Automatically source the Vimrc file on save.
 
