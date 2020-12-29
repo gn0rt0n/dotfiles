@@ -67,3 +67,6 @@ alias rsca="art optimize:clear && sudo supervisorctl restart all"
 
 
 alias chrome="open -a 'Google Chrome'"
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3
+alias sail=./vendor/bin/sail
