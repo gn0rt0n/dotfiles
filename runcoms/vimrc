@@ -48,7 +48,7 @@ nmap s <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-overwin-f2)
+" nmap s <Plug>(easymotion-overwin-f2)
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
@@ -253,8 +253,8 @@ set tabstop=4                          " real tabs should be 8, and they will sh
 set wildignore=*.dll,*.o,*.obj,*.bak,  " ignore these extensions
     \ *.exe,*.pyc,*.jpg,*.gif,*.png,*.svg,*.eot,*.ttf,*.woff  " ignore these extensions
 set nolist                               " we do what to show tabs, to ensure we get them out of my files
-set number                     " Let's activate line numbers.
-set relativenumber
+set nonumber                     " Let's activate line numbers.
+" set relativenumber
 set hidden
 set timeoutlen=1000 ttimeoutlen=0           " Elminates delays on ESC key
 set lazyredraw
@@ -291,7 +291,8 @@ nmap <Leader>ev :edit $MYVIMRC<cr>
 nmap <Leader>fn :echo @%<cr>
 
 "Add simple highlight removal.
-nmap <Leader><Leader> :set hlsearch! hlsearch?<CR>
+nmap <Leader><Leader> :set hls!<CR>
+nnoremap / :set hlsearch<cr>/
 
 "Remap escape key since it's used so much
 ino jj <esc>
