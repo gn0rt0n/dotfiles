@@ -1,16 +1,23 @@
 [user]
-	email = gary.norton@odindev.com
+	email = gary@odindev.com
 	name = Gary Norton
+	signingKey = 9C7A04CB
 [push]
 	default = upstream
-[diff]
-	renamelimit = 100000
-	tool = vimdiff
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[mergetool "vimdiff3"]
+	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [merge]
-	tool = vimdiff
-	ff = false
-	ff = true
-[difftool]
-	prompt = false
+	tool = vimdiff3
+[pull]
+	rebase = true
 [commit]
-	template = ~/.gitmessage
+	gpgsign = true
+[gpg]
+	program = gpg2
+[init]
+	defaultBranch = master
