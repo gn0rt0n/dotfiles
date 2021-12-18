@@ -17,32 +17,32 @@ case `uname` in
   ;;
 esac
 
-rbenv() {
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(command rbenv init -)"
-  rbenv "$@"
-}
+# rbenv() {
+#   export PATH="$HOME/.rbenv/bin:$PATH"
+#   eval "$(command rbenv init -)"
+#   rbenv "$@"
+# }
 
-nvm() {
-    unset -f nvm
-    export NVM_DIR=~/.nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm "$@"
-}
+# nvm() {
+#     unset -f nvm
+#     export NVM_DIR=~/.nvm
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#     nvm "$@"
+# }
 
-node() {
-    unset -f node
-    export NVM_DIR=~/.nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    node "$@"
-}
+# node() {
+#     unset -f node
+#     export NVM_DIR=~/.nvm
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#     node "$@"
+# }
 
-npm() {
-    unset -f npm
-    export NVM_DIR=~/.nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    npm "$@"
-}
+# npm() {
+#     unset -f npm
+#     export NVM_DIR=~/.nvm
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#     npm "$@"
+# }
 
 #PATH="/home/gnorton/perl5/bin${PATH+:}${PATH}"; export PATH;
 #PERL5LIB="/home/gnorton/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
@@ -52,12 +52,11 @@ npm() {
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
-  . ~/.config/exercism/exercism_completion.zsh
-fi
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin:$HOME/bin"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
 #
@@ -67,4 +66,9 @@ export PATH="$PATH:$HOME/.composer/vendor/bin:$HOME/bin"
 if [[ -s "$HOME/.zaliases" ]]; then
   source "$HOME/.zaliases"
 fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 

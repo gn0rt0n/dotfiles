@@ -1,0 +1,71 @@
+{
+	"name": "split-line",
+	"displayName": "split line",
+	"description": "split line into multiple lines",
+	"version": "1.0.2",
+	"publisher": "chenzhe",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.splitLine"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.splitLine",
+				"title": "split line"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.splitLine",
+				"key": "ctrl+alt+s",
+				"mac": "ctrl+cmd+s",
+				"when": "editorTextFocus && !editorReadonly",
+				"args": {
+					"separator": ",",
+					"breakStartEnd": false
+				}
+			},
+			{
+				"command": "extension.splitLine",
+				"key": "ctrl+alt+x",
+				"mac": "ctrl+cmd+x",
+				"when": "editorTextFocus && !editorReadonly",
+				"args": {
+					"separator": ",",
+					"breakStartEnd": true
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chenxxzhe/vscode-ext-split-line"
+	},
+	"__metadata": {
+		"id": "6579a401-9ff4-464b-be39-dc31ecf687e1",
+		"publisherId": "93871746-99e8-4b8c-af51-9bfdc96bd2d0",
+		"publisherDisplayName": "chenzhe",
+		"installedTimestamp": 1638841364769
+	}
+}

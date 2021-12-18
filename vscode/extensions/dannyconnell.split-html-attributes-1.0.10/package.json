@@ -1,0 +1,119 @@
+{
+	"name": "split-html-attributes",
+	"displayName": "Split HTML Attributes (Vue, React, Angular)",
+	"description": "Split your Vue, React & Angular directives & props (and HTML attributes) onto new lines, instantly!",
+	"icon": "images/icon.png",
+	"version": "1.0.10",
+	"publisher": "dannyconnell",
+	"engines": {
+		"vscode": "^1.40.0"
+	},
+	"categories": [
+		"Formatters"
+	],
+	"keywords": [
+		"vue",
+		"react",
+		"angular",
+		"formatter",
+		"format",
+		"vue.js",
+		"vuejs",
+		"reactjs",
+		"angularjs",
+		"new lines",
+		"break",
+		"break directives",
+		"break vue directives",
+		"break react directives",
+		"break angular directives",
+		"break up",
+		"break up directives",
+		"break up vue directives",
+		"break up react directives",
+		"break up angular directives",
+		"split",
+		"split props",
+		"split directives",
+		"split vue directives",
+		"split react directives",
+		"split angular directives",
+		"split onto new lines",
+		"split attributes onto new lines",
+		"split attributes new lines",
+		"danny connell",
+		"make apps with danny"
+	],
+	"activationEvents": [
+		"onCommand:extension.splitHTMLAttributes"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.splitHTMLAttributes",
+				"title": "Split HTML Attributes"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.splitHTMLAttributes",
+				"key": "ctrl+alt+shift+a",
+				"when": "editorTextFocus && !editorReadonly"
+			}
+		],
+		"configuration": {
+			"title": "Split HTML Attributes",
+			"properties": {
+				"splitHTMLAttributes.tabSize": {
+					"type": "number",
+					"default": 2,
+					"description": "Number of spaces for indentation.",
+					"scope": "resource"
+				},
+				"splitHTMLAttributes.useSpacesForTabs": {
+					"type": "boolean",
+					"default": true,
+					"description": "Use spaces for tabs.",
+					"scope": "resource"
+				},
+				"splitHTMLAttributes.closingBracketOnNewLine": {
+					"type": "boolean",
+					"default": false,
+					"description": "Place closing bracket (> or />) on a new line.",
+					"scope": "resource"
+				},
+				"splitHTMLAttributes.sortOrder": {
+					"type": "array",
+					"default": [],
+					"description": "Your preferred order for attributes e.g. [\"v-if\", \"v-else\", \"v-\", \"@click\", \"@focus\", \"@\"]",
+					"scope": "resource"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.40.0",
+		"eslint": "^6.6.0",
+		"glob": "^7.1.5",
+		"mocha": "^6.2.2",
+		"typescript": "^3.6.4",
+		"vscode-test": "^1.2.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dannyconnell/vscode-split-html-attributes.git"
+	},
+	"__metadata": {
+		"id": "21a6cf0a-5bba-4701-a555-c9882057d736",
+		"publisherId": "eb13a7d4-c605-4031-ada7-6d1ed99ea39e",
+		"publisherDisplayName": "Danny Connell",
+		"installedTimestamp": 1638841364588
+	}
+}

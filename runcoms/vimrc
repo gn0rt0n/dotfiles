@@ -31,13 +31,6 @@ Plug 'ervandew/supertab'
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s', '"', "'"]
 let g:SuperTabDefaultCompletionType = '<C-p>'
 
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-inoremap <Tab> <c-r>=UltiSnips#ExpandSnippet()<cr>
-inoremap <leader>us <Esc>:call UltiSnips#ListSnippets()<CR>
 
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -53,8 +46,6 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-
-Plug 'honza/vim-snippets'
 
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_start_level =2
