@@ -10,6 +10,5 @@ done
 # ln -s "${ZDOTDIR:-$HOME}/.dotfiles/iterm2" ${ZDOTDIR:-$HOME}/.iterm2
 # ln -s "${ZDOTDIR:-$HOME}/.dotfiles/nvm" ${ZDOTDIR:-$HOME}/.nvm
 # ln -s "${ZDOTDIR:-$HOME}/.dotfiles/vscode" ${ZDOTDIR:-$HOME}/.vscode
-# ln -s "${ZDOTDIR:-$HOME}/.dotfiles/zsh-vi-mode" ${ZDOTDIR:-$HOME}/.zsh-vi-mode
 
 git submodule update --init --recursive
